@@ -1,5 +1,7 @@
 # Fok_Gyem flipdot clock
 
+[<video src="https://www.youtube.com/watch?v=aBFGRFe8ESA" />](https://www.youtube.com/watch?v=aBFGRFe8ESA)
+
 Проект по воссозданию блока управления часов на основе перекидных (flip_dot, блинкер) модулей венгерской фирмы Fok_GYEM. Внешний вид часов до разборки:
 
 ![image](extras/images/old_clock.jpg)
