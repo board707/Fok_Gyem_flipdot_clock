@@ -31,10 +31,19 @@
 
 Пять плат были собраны в этакую стопку:
 
-<img src="extras/images/pcb_block1.jpg" alt="block1" width="300"/> <img src="extras/images/pcb_block2.jpg" alt="block2" width="300"/>
+<img src="extras/images/pcb_block1.jpg" alt="block1" width="400"/> <img src="extras/images/pcb_block2.jpg" alt="block2" width="400"/>
 
 и помещены в общий корпус вместе с блоком питания, часов и кнопочным пультом управления на основе ТМ1638.
 
 <img src="extras/images/box.jpg" alt="box"/> 
+
+Цифровые блоки - спереди и сзади:
+
+<img src="extras/images/clock.jpg" alt="clock"  width="800" /> 
+
+<img src="extras/images/connections.jpg" alt="connect"  width="800" /> 
+
+
+
 
 
