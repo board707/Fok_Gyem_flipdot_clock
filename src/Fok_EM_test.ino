@@ -294,7 +294,7 @@ void loop() {
 	switch (Mode) {
 		
 		case TMode::TEST_MODE:
-			if ((buttons & 1) && (!(prev_but & 1))) {
+			if ((buttons & 0x80) && (!(prev_but & 0x80))) {
 				Fok_digits.fillDisplay(255);
 				delay(500);
 				Fok_digits.fillDisplay(0);
