@@ -1,6 +1,27 @@
-#include "TM1638_Module.h"
+/*
+ * Fok_EM_test
+ *
+ * Flip dot clock project
+ *
+ *
+ * by Dmitry E. Dmitriev (aka b707) (c) 2024
+ *
+ * URL: https://github.com/board707/Fok_Gyem_flipdot_clock
+ */
+
+
+// This code use Arduino library for the DS3231 real-time clock (RTC).
+// by Andrew Wickert <awickert@umn.edu>, Eric Ayars, Jean-Claude Wippler, Northern Widget LLC <info@northernwidget.com> 
+// URL: https://github.com/NorthernWidget/DS3231 
 #include <DS3231.h>
+
+// Arduino Library for Fok_Gyem flip dot control board
+// by Dmitry E. Dmitriev (aka b707) (c) 2024
 #include "Fok_Gyem.h"
+
+// Arduino functions for TM1638_Module
+#include "TM1638_Module.h"
+
 
 // Digits cable order from control module
 //     HOURS_DIGITS_FIRST  - from left to right, HH :: MM :: DD, MSB
@@ -60,7 +81,7 @@ TMode Mode = TMode::CLOCK_MODE;
 // Массив пинов для цифровых модулей
 // элементы 0-3 - время, 4-5 - число. 
 // От старших разрядов к младшим слева направо
-#ifdef(HOURS_DIGITS_FIRST)
+#if defined(HOURS_DIGITS_FIRST)
 uint8_t digitPins[NUM_DIGITS] = {3, 2, 6, 7, 8, 9};
 #else
 uint8_t digitPins[NUM_DIGITS] = {9, 8, 7, 6, 2, 3};
