@@ -2,6 +2,10 @@
 #include <DS3231.h>
 #include "Fok_Gyem.h"
 
+// Digits cable order from control module
+//     HOURS_DIGITS_FIRST  - from left to right, HH :: MM :: DD, MSB
+//     otherwice - DD :: MM ::: HH, LSB
+#define HOURS_DIGITS_FIRST 
 
 //#define DEBUG
 #ifdef DEBUG
@@ -52,10 +56,15 @@ TMode Mode = TMode::CLOCK_MODE;
 #define OE_PIN 11
 // число модулей цифр
 #define NUM_DIGITS 6
-// массив пинов для цифровых модулей
+
+// Массив пинов для цифровых модулей
 // элементы 0-3 - время, 4-5 - число. 
 // От старших разрядов к младшим слева направо
+#ifdef(HOURS_DIGITS_FIRST)
+uint8_t digitPins[NUM_DIGITS] = {3, 2, 6, 7, 8, 9};
+#else
 uint8_t digitPins[NUM_DIGITS] = {9, 8, 7, 6, 2, 3};
+#endif
 // Переключатели полярности
 uint8_t polarityPins[] = {4, 5};
 
@@ -337,7 +346,11 @@ void loop() {
 			if ((buttons & 0x10) && (!(prev_but & 0x10))) { incrDatePos(); }
 			if ((buttons & 0x20) && (!(prev_but & 0x20))) { changeDateValue(0); }
 			if ((buttons & 0x40) && (!(prev_but & 0x40))) { changeDateValue(1); }
-			if ((buttons & 0x80) && (!(prev_but & 0x80))) { setCalendarDate(); changeMode(TMode::SET_TIME); }
+			if ((buttons & 0x80) && (!(prev_but & 0x80))) { 
+				                        setCalendarDate(); 
+										showDate(date_set_vals[0],  prev_day);
+										prev_day = date_set_vals[0];
+										changeMode(TMode::SET_TIME); }
 			break;
 		case TMode::LAST_MODE:
 			changeMode();
